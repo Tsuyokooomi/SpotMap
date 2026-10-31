@@ -1,6 +1,6 @@
-# SpotMap
+# SpotMapPH
 
-SpotMap is a location-pinning web app for Philippines. It shows food spots, cafes, malls, and hangouts on an interactive map. Users browse pins, filter by category and tags, search by name, and save places to a personal list. Admins review and approve new submissions.
+SpotMapPH is a location-pinning web app for the Philippines. It shows food spots, cafes, malls, and hangouts on an interactive map, from Luzon to Mindanao. Users browse pins, filter by category and tags, search by name, and save places to a personal list. Admins review and approve new submissions.
 
 ## Live Demo
 
@@ -9,7 +9,8 @@ SpotMap is a location-pinning web app for Philippines. It shows food spots, cafe
 
 ## Features
 
-- Full-screen map centered on Dasmariñas, Cavite, built with Leaflet and OpenStreetMap
+- Full-screen map of the Philippines, built with Leaflet and OpenStreetMap (the starting view is set in `js/app.js`)
+- Community-submitted pins from any city or province
 - Color-coded pins by category: Food, Cafe, Malls, Hangouts
 - Place cards that show name, address, description, and tags
 - Category filters and a tag filter panel (a place must match every checked tag)
@@ -34,7 +35,7 @@ SpotMap is a location-pinning web app for Philippines. It shows food spots, cafe
 ## Project Structure
 
 ```
-DLSUD-SpotMap/
+SpotMapPH/
 ├── index.html
 ├── css/
 │   └── style.css
@@ -90,7 +91,10 @@ Create a `.env` file in `spotmap-backend/` with:
 MONGODB_URI=your_mongodb_atlas_connection_string
 JWT_SECRET=your_jwt_secret
 PORT=5000
+ALLOWED_ORIGINS=http://localhost:5500,http://127.0.0.1:5500
 ```
+
+`ALLOWED_ORIGINS` lists the frontend sites the API accepts requests from. Separate several origins with commas. In production, set it on Render to your live domain, for example `https://spotmapph.vercel.app`.
 
 Then start the server:
 
@@ -108,6 +112,13 @@ Open `index.html` in a browser, or serve the root folder with any static file se
 - **User**: email, hashed password, role (user or admin)
 - **SavedPlace**: links a user to a place, with a type (star or to-go); a user can't save the same place twice under the same type
 - **Comment**: linked to a place and a user
+
+## Deployment
+
+- **Frontend (Vercel):** serve the root folder as a static site.
+- **Backend (Render):** set `MONGODB_URI`, `JWT_SECRET`, and `ALLOWED_ORIGINS` as environment variables.
+- Set `API_BASE` in `js/config.js` to your Render URL, ending in `/api`.
+- After a domain change, add the new origin to `ALLOWED_ORIGINS`. Without it, the browser blocks API calls with a CORS error.
 
 ## Notes
 
