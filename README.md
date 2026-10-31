@@ -1,6 +1,6 @@
 # SpotMap
 
-SpotMap is a location-pinning web app for Dasmariñas, Cavite. It shows food spots, cafes, malls, and hangouts on an interactive map. Users browse pins, filter by category and tags, search by name, and save places to a personal list. Admins review and approve new submissions.
+SpotMap is a location-pinning web app for Philippines. It shows food spots, cafes, malls, and hangouts on an interactive map. Users browse pins, filter by category and tags, search by name, and save places to a personal list. Admins review and approve new submissions.
 
 ## Live Demo
 
